@@ -10,8 +10,7 @@ function Routes(){
     return(
         <BrowserRouter>
             <Switch>
-                <Route path="/" exact component={Dados} />
-                <Route path="/login" component={Login} />
+                <Route path="/" exact component={Login} />
                 <Route path="/cadastro" exact component={Cadastro} />
                 <Route path="/perguntas" exact component={Perguntas} />
             </Switch>        

@@ -4,4 +4,4 @@ import axios from 'axios';
         baseURL : 'https://covid-apipussy-dev-dolls.herokuapp.com/'
     });
 
-    export default api;
+export default api;

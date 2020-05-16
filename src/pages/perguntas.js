@@ -1,10 +1,12 @@
 import React from 'react';
 import NivelQuestionario from '../components/NivelQuestionario';
+import Pergunta from '../components/Pergunta'
 
 function Perguntas() {
   return (
     <div>
-       <NivelQuestionario/>
+      <Pergunta/>
+      <NivelQuestionario/>
     </div>
   );
 }

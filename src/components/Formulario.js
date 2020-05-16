@@ -1,7 +1,7 @@
 import React from 'react'
 import api from '../service/api'
 
-import './Formulario.scss'
+
 
 
 class NameForm extends React.Component {

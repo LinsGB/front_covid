@@ -1,5 +1,5 @@
 import React from 'react'
-import './NivelQuestionario.scss'
+
 
 class NivelQuestionario extends React.Component {
     constructor(props) {
@@ -13,8 +13,6 @@ class NivelQuestionario extends React.Component {
         this.setState({
             nivel : numero
         });
-        console.log(numero )
-        console.log(this.state.nivel)//pq ta printando antes do setState?
     }
 
     render() {

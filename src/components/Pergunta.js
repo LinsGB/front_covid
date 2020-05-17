@@ -20,7 +20,6 @@ class Pergunta extends React.Component {
         this.setArraySintomas();
     }
 
-
     setlevel(event) {
         var numero = parseInt(event.target.getAttribute('id'))
         if(this.state.addressSintoma < this.state.arrayIdSintoma.length){
@@ -30,6 +29,7 @@ class Pergunta extends React.Component {
             });
         }
         else{
+            //titulo padrão
             //imagem padrão
         }
     }
@@ -55,8 +55,6 @@ class Pergunta extends React.Component {
             disabledButton: true
         })
     }
-
-
 
     render() {
         return (

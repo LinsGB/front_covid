@@ -1,5 +1,4 @@
 import React from 'react'
-import imagemDoente from '../imagem/doente.jpg'
 import api from '../service/api'
 import MyButton from './MyButton';
 
@@ -14,23 +13,26 @@ class Pergunta extends React.Component {
     */ 
     constructor(props) {
         super(props);
-        this.state = { addressSintoma: 0, arrayNomeSintoma: [], arrayIdSintoma: [], text:'', level: -1, disabledButton: true };
+        this.state = { 
+            addressSintoma: 4,
+            arrayNomeSintoma: [], 
+            arrayIdSintoma: [], 
+            text:'', 
+            level: -1, 
+            disabledButton: true, 
+            imagem: 'https://i.pinimg.com/736x/5f/3d/f9/5f3df9a20c35308eb27a153248628c2a.jpg'
+        };
         this.setlevel = this.setlevel.bind(this);
         this.setCorrentIdNameSintoma = this.setCorrentIdNameSintoma.bind(this);
         this.setArraySintomas();
     }
 
     setlevel(event) {
-        var numero = parseInt(event.target.getAttribute('id'))
-        if(this.state.addressSintoma < this.state.arrayIdSintoma.length){
+        if(this.state.addressSintoma <= this.state.arrayIdSintoma.length){
             this.setState({
-                level: numero,
+                level: parseInt(event.target.getAttribute('id')),
                 disabledButton: false
             });
-        }
-        else{
-            //titulo padrão
-            //imagem padrão
         }
     }
 
@@ -48,12 +50,21 @@ class Pergunta extends React.Component {
     }
 
     setCorrentIdNameSintoma(event) {
-        var newaddress = this.state.addressSintoma + 1
-        this.setState({
-            addressSintoma: newaddress,
-            text: 'Qual é seu level de '+this.state.arrayNomeSintoma[this.state.addressSintoma]+"?",
-            disabledButton: true
-        })
+        if(this.state.addressSintoma < this.state.arrayIdSintoma.length){
+            this.setState({
+                addressSintoma: this.state.addressSintoma + 1,
+                text: 'Qual é seu level de '+this.state.arrayNomeSintoma[this.state.addressSintoma]+"?",
+                disabledButton: true
+            })
+        }
+        else{
+            this.setState({
+                addressSintoma: this.state.addressSintoma + 1,
+                text: 'acabou',
+                disabledButton: true,
+                imagem: 'https://pm1.narvii.com/6704/6e0f2fa15572d5e4af3ce47024acb7cf384a6a56_hq.jpg'
+            })
+        }
     }
 
     render() {
@@ -61,7 +72,7 @@ class Pergunta extends React.Component {
             <div>
                 <div>
                     <h1> {this.state.text}</h1>
-                    <img src={imagemDoente} alt='Pessoa Doente' />
+                    <img src={this.state.imagem} alt='Pessoa Doente' />
                     <MyButton disabled={this.state.disabledButton} onClick={this.setCorrentIdNameSintoma} label="clique" />
                 </div>
                 <div>

@@ -48,11 +48,10 @@ class NameForm extends React.Component {
 
   render() {
     return (
-      <div>
-        <label>
-          CPF:
-            <input type="text" value={this.state.value} onChange={this.valueHandleChange} />
-        </label>
+        <div>
+        <form class="box" method="post" onSubmit={this.handleSubmit}>
+        <h1>CPF:</h1>
+        <input type="text" value={this.state.value} onChange={this.valueHandleChange} />
         {
           this.state.blockButton
             ? <Link to={"/pergunta" + this.state.cpf}>
@@ -62,6 +61,7 @@ class NameForm extends React.Component {
               <MyButton disabled={this.state.blockButton} label="test" />
             </Link>
         }
+        </form> 
       </div>
 
     );

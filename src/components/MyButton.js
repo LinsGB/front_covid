@@ -1,4 +1,6 @@
 import React from 'react'
+import '../index.css'
+
 
 class MyButton extends React.Component {
     render() {

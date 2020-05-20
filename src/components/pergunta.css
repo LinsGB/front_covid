@@ -17,10 +17,12 @@
     align-items: center;
     margin-top: 80px;
     margin-bottom: 40px;
+    box-shadow: 5px 5px 2px 1px rgba(0, 0, 0, .2);
 }
 
 .img-content img {
     width: 40%;
+    border-radius: 20px;
 }
 
 .img-content h1 {

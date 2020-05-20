@@ -14,7 +14,8 @@ class Pergunta extends React.Component {
     constructor(props) {
         super(props);
         this.state = { 
-            addressSintoma: 4,
+            cpf: this.props.match.params.cpf,
+            addressSintoma: 0,
             arrayNomeSintoma: [], 
             arrayIdSintoma: [], 
             text:'', 
@@ -50,7 +51,9 @@ class Pergunta extends React.Component {
     }
 
     setCorrentIdNameSintoma(event) {
+        api.post()
         if(this.state.addressSintoma < this.state.arrayIdSintoma.length){
+
             this.setState({
                 addressSintoma: this.state.addressSintoma + 1,
                 text: 'Qual é seu level de '+this.state.arrayNomeSintoma[this.state.addressSintoma]+"?",
@@ -72,6 +75,7 @@ class Pergunta extends React.Component {
             <div>
                 <div>
                     <h1> {this.state.text}</h1>
+                    <h1>TESTE : {this.state.cpf}</h1>
                     <img src={this.state.imagem} alt='Pessoa Doente' />
                     <MyButton disabled={this.state.disabledButton} onClick={this.setCorrentIdNameSintoma} label="clique" />
                 </div>
@@ -88,6 +92,6 @@ class Pergunta extends React.Component {
     }
 }
 
-//criar banco de imagens e alterar junto com o titulo
+//
 //eviar post do sintoma
 export default Pergunta

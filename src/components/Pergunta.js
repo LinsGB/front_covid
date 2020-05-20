@@ -32,11 +32,9 @@ class Pergunta extends React.Component {
         this.setCorrentIdNameSintoma = this.setCorrentIdNameSintoma.bind(this);
         this.setArraySintomas();
     }
+    
     setlevel(event) {
-        $("button").on('click', function(){
-            $(this).addClass('active');
-            $(this).siblings().removeClass('active')
-        })
+        
         if(this.state.addressSintoma <= this.state.arrayIdSintoma.length){
             this.setState({
                 level: parseInt(event.target.getAttribute('id')),
@@ -80,6 +78,10 @@ class Pergunta extends React.Component {
 
     }
     render() {
+        $("button").on('click', function(){
+            $(this).addClass('active');
+            $(this).siblings().removeClass('active')
+        })
         const active = {
             marginLeft:10000
           };
@@ -94,7 +96,7 @@ class Pergunta extends React.Component {
                     
                 </div>
                 <div>
-                    <MyButton id="0" onClick={this.setlevel}  label="0" />
+                    <MyButton id="0" onClick={this.setlevel} label="0" />
                     <MyButton id="1" onClick={this.setlevel} label="1" />
                     <MyButton id="2" onClick={this.setlevel} label="2" />
                     <MyButton id="3" onClick={this.setlevel} label="3" />

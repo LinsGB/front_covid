@@ -1,6 +1,7 @@
 import React from 'react'
 import api from '../service/api'
 import MyButton from './MyButton';
+import Header from './Header';
 
 class Pergunta extends React.Component {
     /*
@@ -13,8 +14,10 @@ class Pergunta extends React.Component {
     */ 
     constructor(props) {
         super(props);
-        this.state = { 
-            cpf: this.props.match.params.cpf,
+        var Base64 = require('js-base64').Base64;
+        this.state = {
+            cpfBASE64: this.props.match.params.cpf,
+            cpf: Base64.decode(this.props.match.params.cpf),
             addressSintoma: 0,
             arrayNomeSintoma: [], 
             arrayIdSintoma: [], 
@@ -38,6 +41,7 @@ class Pergunta extends React.Component {
     }
 
     setArraySintomas() {
+        //setar apenas os sintomas que não foram respondidos
         api.get('/sintomas').then((res) => (
             res.data.map((value) =>
                 this.setState({
@@ -51,7 +55,7 @@ class Pergunta extends React.Component {
     }
 
     setCorrentIdNameSintoma(event) {
-        api.post()
+        //fazer post da resposta
         if(this.state.addressSintoma < this.state.arrayIdSintoma.length){
 
             this.setState({
@@ -73,6 +77,7 @@ class Pergunta extends React.Component {
     render() {
         return (
             <div>
+                <Header cpf={this.state.cpfBASE64}/>
                 <div>
                     <h1> {this.state.text}</h1>
                     <h1>TESTE : {this.state.cpf}</h1>

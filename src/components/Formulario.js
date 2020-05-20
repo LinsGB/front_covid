@@ -11,6 +11,7 @@ class NameForm extends React.Component {
     super(props);
     this.state = {
       cpf: '',
+      cpfBASE64: '',
       blockButton: true
     };
     this.valueHandleChange = this.valueHandleChange.bind(this);
@@ -18,8 +19,11 @@ class NameForm extends React.Component {
   }
 
   valueHandleChange(event) {
+    var Base64 = require('js-base64').Base64;
+    var eventTargetValue = event.target.value
     this.setState({
-      cpf: event.target.value
+      cpf: eventTargetValue,
+      cpfBASE64: Base64.encode(eventTargetValue)
     },
       () => {
         var validarCpf = require("validar-cpf")
@@ -28,40 +32,28 @@ class NameForm extends React.Component {
           this.setState({
             blockButton: false
           });
-        }
+        }       
       });
   }
 
   handleSubmit(event) {
-    var validarCpf = require("validar-cpf")
-    let cpf = this.state.cpf
-    if (validarCpf(cpf)) {
-      api.post(`login/${cpf}`)
-    }
-    else {
-      alert('CPF INVALIDO');
-
-
-    }
+    api.post(`login`, { cpf: this.state.cpf }).then(function (response) {
+      console.log(response)
+    })
     event.preventDefault();
   }
 
   render() {
     return (
-        <div>
+      <div>
         <form class="box" method="post" onSubmit={this.handleSubmit}>
-        <h1>CPF:</h1>
-        <input type="text" value={this.state.value} onChange={this.valueHandleChange} />
-        {
-          this.state.blockButton
-            ? <Link to={"/pergunta" + this.state.cpf}>
-              <MyButton disabled={this.state.blockButton} label="test2" />
-            </Link>
-            : <Link to={"/pergunta" + this.state.cpf}>
-              <MyButton disabled={this.state.blockButton} label="test" />
-            </Link>
-        }
-        </form> 
+          <h1>CPF:</h1>
+          <input type="text" value={this.state.value} onChange={this.valueHandleChange} />
+          
+          <Link to={"/pergunta" + this.state.cpfBASE64}>
+            <MyButton disabled={this.state.blockButton} label="test" />
+          </Link>
+        </form>
       </div>
 
     );

@@ -11,7 +11,7 @@ function Routes(){
             <Switch>
                 <Route exact path="/" component={Formulario} />
                 <Route path="/pergunta:cpf" render={(props) => <Pergunta {...props}/>} />
-                <Route path="/Graficos:cpf" render={(props) => <Graficos {...props}/>} />
+                <Route path="/graficos:cpf" render={(props) => <Graficos {...props}/>} />
             </Switch>        
         </BrowserRouter>
     );

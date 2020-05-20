@@ -95,7 +95,7 @@ class Pergunta extends React.Component {
                     <img src={this.state.imagem} alt='Pessoa Doente' />
                     
                 </div>
-                <div>
+                <div className="buttons">
                     <MyButton id="0" onClick={this.setlevel} label="0" />
                     <MyButton id="1" onClick={this.setlevel} label="1" />
                     <MyButton id="2" onClick={this.setlevel} label="2" />

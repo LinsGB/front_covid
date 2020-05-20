@@ -2,6 +2,8 @@ import React from 'react'
 import api from '../service/api'
 import MyButton from './MyButton';
 import Header from './Header';
+import './pergunta.css';
+import $ from 'jquery';
 
 class Pergunta extends React.Component {
     /*
@@ -30,8 +32,11 @@ class Pergunta extends React.Component {
         this.setCorrentIdNameSintoma = this.setCorrentIdNameSintoma.bind(this);
         this.setArraySintomas();
     }
-
     setlevel(event) {
+        $("button").on('click', function(){
+            $(this).addClass('active');
+            $(this).siblings().removeClass('active')
+        })
         if(this.state.addressSintoma <= this.state.arrayIdSintoma.length){
             this.setState({
                 level: parseInt(event.target.getAttribute('id')),
@@ -72,25 +77,30 @@ class Pergunta extends React.Component {
                 imagem: 'https://pm1.narvii.com/6704/6e0f2fa15572d5e4af3ce47024acb7cf384a6a56_hq.jpg'
             })
         }
-    }
 
+    }
     render() {
+        const active = {
+            marginLeft:10000
+          };
         return (
-            <div>
+            
+            <div id="pergunta">
                 <Header cpf={this.state.cpfBASE64}/>
-                <div>
+                <div className="img-content">
                     <h1> {this.state.text}</h1>
                     <h1>TESTE : {this.state.cpf}</h1>
                     <img src={this.state.imagem} alt='Pessoa Doente' />
-                    <MyButton disabled={this.state.disabledButton} onClick={this.setCorrentIdNameSintoma} label="clique" />
+                    
                 </div>
                 <div>
-                    <MyButton id="0" onClick={this.setlevel} label="0" />
+                    <MyButton id="0" onClick={this.setlevel}  label="0" />
                     <MyButton id="1" onClick={this.setlevel} label="1" />
                     <MyButton id="2" onClick={this.setlevel} label="2" />
                     <MyButton id="3" onClick={this.setlevel} label="3" />
                     <MyButton id="4" onClick={this.setlevel} label="4" />
                     <MyButton id="5" onClick={this.setlevel} label="5" />
+                    <MyButton disabled={this.state.disabledButton} onClick={this.setCorrentIdNameSintoma} style={active} label="clique"  />
                 </div>
             </div>
         )

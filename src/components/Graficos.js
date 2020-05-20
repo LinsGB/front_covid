@@ -1,6 +1,6 @@
 import React from 'react'
 import Header from './Header';
-
+import './Grafico.css'
 
 class Graficos extends React.Component {
     constructor(props){
@@ -13,7 +13,7 @@ class Graficos extends React.Component {
     }
     render() {
         return (
-            <div>
+            <div className="main-content">
                 <Header cpf={this.state.cpfBASE64} />
                 <div>
                     <iframe

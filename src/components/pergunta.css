@@ -1,0 +1,32 @@
+#pergunta {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.clique {
+    margin-left: 100px;
+}
+
+.img-content {
+    background: #191919;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 80px;
+    margin-bottom: 40px;
+}
+
+.img-content img {
+    width: 40%;
+}
+
+.img-content h1 {
+    color: #ffffff;
+}
+
+.active {
+    background: #2ecc71;
+}

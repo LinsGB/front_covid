@@ -1,0 +1,21 @@
+.links {
+    display: flex;
+    justify-content: space-around;
+    width: 80%;
+}
+
+.links a {
+    text-decoration: none;
+    border: 0;
+    text-align: center;
+    border: 2px solid #2ecc71;
+    padding: 8px 11px;
+    outline: none;
+    color: white;
+    transition: 0.25s;
+    cursor: pointer;
+}
+
+.active a {
+    background: #2ecc71 !important;
+}

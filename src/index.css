@@ -19,6 +19,7 @@ code {
     transform: translate(-50%, -50%);
     background: #191919;
     text-align: center;
+    box-shadow: 5px 5px 2px 1px rgba(0, 0, 0, .2);
 }
 
 .box h1 {

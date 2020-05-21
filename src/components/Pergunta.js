@@ -23,6 +23,7 @@ class Pergunta extends React.Component {
             addressSintoma: 0,
             arrayNomeSintoma: [],
             arrayIdSintoma: [],
+            sintomasAlredyResponded: [],
             text: '',
             level: -1,
             disabledButton: true,
@@ -34,7 +35,7 @@ class Pergunta extends React.Component {
     }
 
     setlevel(event) {
-
+        console.log("ADRESS: "+this.state.addressSintoma)
         if (this.state.addressSintoma <= this.state.arrayIdSintoma.length) {
             this.setState({
                 level: parseInt(event.target.getAttribute('id')),
@@ -53,20 +54,29 @@ class Pergunta extends React.Component {
     }
 
     removeAlredyResponded(arrayOfValuesToRemove) {
+        console.log("arrayOfValuesToRemove: "+arrayOfValuesToRemove)
         var newArrayNomeSintoma = this.state.arrayNomeSintoma
         var newArrayIdSintoma = this.state.arrayIdSintoma
         for (let i = 0; i < newArrayIdSintoma.length; i++) {
             var valueId = newArrayIdSintoma[i]
             if (this.contains(valueId, arrayOfValuesToRemove)) {
+                console.log("antes: "+newArrayIdSintoma)
+                console.log("antes: "+newArrayNomeSintoma)
                 newArrayIdSintoma.splice(i, 1)
                 newArrayNomeSintoma.splice(i, 1)
+                console.log("depois: "+newArrayIdSintoma)
+                console.log("depois: "+newArrayNomeSintoma)
                 i -= 1
             }
         }
+        console.log("depois: "+newArrayIdSintoma)
+        console.log("depois: "+newArrayNomeSintoma)
+        console.log(this.state.addressSintoma)
         this.setState({
             arrayIdSintoma: newArrayIdSintoma,
             arrayNomeSintoma: newArrayNomeSintoma
         },
+            this.minusAdressSintoma(),
             this.setCorrentIdNameSintoma()
         )
     }
@@ -81,6 +91,7 @@ class Pergunta extends React.Component {
                     arrayIdSintoma: this.state.arrayIdSintoma.concat(value.id)
                 })
             ),
+            this.setCorrentIdNameSintoma(),
             api.get('usuarios/' + this.state.cpf + '/sintomas/registros?data=' + this.date()).then((res) => (
                 res.data.map((value) =>
                     sintomasAlredyResponded = sintomasAlredyResponded.concat(value.sintoma.id)
@@ -89,6 +100,12 @@ class Pergunta extends React.Component {
             ))
         ))
         console.log(this.state)
+    }
+
+    minusAdressSintoma(){
+        this.setState((state) => {
+            return {addressSintoma: state.addressSintoma-1 }
+        })
     }
 
     date() {
@@ -101,6 +118,7 @@ class Pergunta extends React.Component {
     }
 
     setCorrentIdNameSintoma(event) {
+        console.log("ENTROU")
         if (this.state.level !== -1) {
             var adress = this.state.addressSintoma - 1
             api.post('usuarios/' + this.state.cpf + '/sintomas/' + this.state.arrayIdSintoma[adress], {

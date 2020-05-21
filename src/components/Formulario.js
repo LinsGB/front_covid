@@ -2,7 +2,7 @@ import React from 'react'
 import api from '../service/api'
 import MyButton from './MyButton';
 import { Link } from 'react-router-dom';
-
+import './Formulario.scss';
 
 
 
@@ -44,7 +44,9 @@ class NameForm extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="main-content">
+        <h1>Bem-vindo ao PussyDevDolls</h1>
+        <h3>Para conferir seus sintomas em relação ao novo COVID-19, digite seu CPF</h3>
         <form class="box" method="post" >
           <h1>CPF:</h1>
           <input type="text" value={this.state.value} onChange={this.valueHandleChange} />

@@ -75,7 +75,6 @@ class Pergunta extends React.Component {
     }
 
     setArraySintomas() {
-        //setar apenas os sintomas que não foram/ respondidos usuarios/05189065154/sintomas/registros?data=2020-05-16
         var sintomasAlredyResponded = []
         api.get('/sintomas').then((res) => (
             res.data.map((value) =>
@@ -129,7 +128,7 @@ class Pergunta extends React.Component {
         else {
             this.setState({
                 addressSintoma: this.state.addressSintoma + 1,
-                text: 'Teste foi finalizado, veja seus dados no grafico',
+                text: 'Teste foi finalizado, veja seus dados no gráfico',
                 disabledButton: true,
                 disabledImagem: false,
                 imagem: 'https://pm1.narvii.com/6704/6e0f2fa15572d5e4af3ce47024acb7cf384a6a56_hq.jpg'

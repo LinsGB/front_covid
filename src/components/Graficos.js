@@ -15,12 +15,10 @@ class Graficos extends React.Component {
         return (
             <div className="main-content">
                 <Header cpf={this.state.cpfBASE64} />
-                <div>
+                <div className="grafico">
                     <iframe
                         src={"http://pussy-dev-dolls.herokuapp.com/public/dashboard/779d984c-1f82-4265-bf8d-b6852e931ba6" + "?cpf=" + this.state.cpf}
                         frameborder="0"
-                        width="800"
-                        height="600"
                         allowtransparency
                     ></iframe>
                 </div>

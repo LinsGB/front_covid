@@ -47,6 +47,7 @@ class NameForm extends React.Component {
       <div className="main-content-cpf">
         <h1>Bem-vindo ao PussyDevDolls</h1>
         <h3>Para acompanhar seus sintomas em relação ao novo COVID-19, digite seu CPF</h3>
+        <div>
         <form class="box" method="post" >
           <h1>CPF:</h1>
           <input type="text" value={this.state.value} onChange={this.valueHandleChange} />
@@ -54,6 +55,7 @@ class NameForm extends React.Component {
             <MyButton onClick={this.handleSubmit} disabled={this.state.blockButton} label="Ok" />
           </Link>
         </form>
+        </div>
       </div>
 
     );

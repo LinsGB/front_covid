@@ -28,7 +28,7 @@ class NameForm extends React.Component {
       () => {
         var validarCpf = require("validar-cpf")
         let cpf = this.state.cpf
-        if (validarCpf(cpf)) {
+        if (true) {
           this.setState({
             blockButton: false
           });
@@ -40,18 +40,16 @@ class NameForm extends React.Component {
     api.post('login/'+this.state.cpf).then(function (response) {
       console.log(response)
     })
-    event.preventDefault();
   }
 
   render() {
     return (
       <div>
-        <form class="box" method="post" onSubmit={this.handleSubmit}>
+        <form class="box" method="post" >
           <h1>CPF:</h1>
           <input type="text" value={this.state.value} onChange={this.valueHandleChange} />
-          
           <Link to={"/pergunta" + this.state.cpfBASE64}>
-            <MyButton disabled={this.state.blockButton} label="test" />
+            <MyButton onClick={this.handleSubmit} disabled={this.state.blockButton} label="test" />
           </Link>
         </form>
       </div>

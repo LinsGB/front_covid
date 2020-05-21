@@ -31,7 +31,6 @@ class Pergunta extends React.Component {
         this.setlevel = this.setlevel.bind(this);
         this.setCorrentIdNameSintoma = this.setCorrentIdNameSintoma.bind(this);
         this.setArraySintomas();
-        this.date();
     }
     
     setlevel(event) {
@@ -45,7 +44,7 @@ class Pergunta extends React.Component {
     }
 
     setArraySintomas() {
-        //setar apenas os sintomas que não foram respondidos
+        //setar apenas os sintomas que não foram/ respondidos usuarios/05189065154/sintomas/registros?data=2020-05-16
         api.get('/sintomas').then((res) => (
             res.data.map((value) =>
                 this.setState({

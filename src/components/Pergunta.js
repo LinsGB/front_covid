@@ -151,7 +151,9 @@ class Pergunta extends React.Component {
                     <MyButton id="3" onClick={this.setlevel} label="3" />
                     <MyButton id="4" onClick={this.setlevel} label="4" />
                     <MyButton id="5" onClick={this.setlevel} label="5" />
-                    <MyButton disabled={this.state.disabledButton} onClick={this.setCorrentIdNameSintoma} style={active} label="clique" />
+                </div>
+                <div className="button-proximo">
+                <MyButton disabled={this.state.disabledButton} onClick={this.setCorrentIdNameSintoma} style={active} label="Próximo" />
                 </div>
             </div>
         )

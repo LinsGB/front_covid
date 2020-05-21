@@ -49,7 +49,7 @@ class NameForm extends React.Component {
           <h1>CPF:</h1>
           <input type="text" value={this.state.value} onChange={this.valueHandleChange} />
           <Link to={"/pergunta" + this.state.cpfBASE64}>
-            <MyButton onClick={this.handleSubmit} disabled={this.state.blockButton} label="test" />
+            <MyButton onClick={this.handleSubmit} disabled={this.state.blockButton} label="Ok" />
           </Link>
         </form>
       </div>

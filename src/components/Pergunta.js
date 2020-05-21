@@ -60,18 +60,11 @@ class Pergunta extends React.Component {
         for (let i = 0; i < newArrayIdSintoma.length; i++) {
             var valueId = newArrayIdSintoma[i]
             if (this.contains(valueId, arrayOfValuesToRemove)) {
-                console.log("antes: "+newArrayIdSintoma)
-                console.log("antes: "+newArrayNomeSintoma)
                 newArrayIdSintoma.splice(i, 1)
                 newArrayNomeSintoma.splice(i, 1)
-                console.log("depois: "+newArrayIdSintoma)
-                console.log("depois: "+newArrayNomeSintoma)
                 i -= 1
             }
         }
-        console.log("depois: "+newArrayIdSintoma)
-        console.log("depois: "+newArrayNomeSintoma)
-        console.log(this.state.addressSintoma)
         this.setState({
             arrayIdSintoma: newArrayIdSintoma,
             arrayNomeSintoma: newArrayNomeSintoma
@@ -131,7 +124,7 @@ class Pergunta extends React.Component {
         if (this.state.addressSintoma < this.state.arrayIdSintoma.length) {
             this.setState({
                 addressSintoma: this.state.addressSintoma + 1,
-                text: 'Qual é seu level de ' + this.state.arrayNomeSintoma[this.state.addressSintoma] + "?",
+                text: 'Qual é seu nivel de ' + this.state.arrayNomeSintoma[this.state.addressSintoma] + "?",
                 disabledButton: true
             })
         }

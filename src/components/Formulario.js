@@ -28,7 +28,7 @@ class NameForm extends React.Component {
       () => {
         var validarCpf = require("validar-cpf")
         let cpf = this.state.cpf
-        if (true) {
+        if (validarCpf(cpf)) {
           this.setState({
             blockButton: false
           });

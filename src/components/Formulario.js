@@ -44,9 +44,9 @@ class NameForm extends React.Component {
 
   render() {
     return (
-      <div className="main-content">
+      <div className="main-content-cpf">
         <h1>Bem-vindo ao PussyDevDolls</h1>
-        <h3>Para conferir seus sintomas em relação ao novo COVID-19, digite seu CPF</h3>
+        <h3>Para acompanhar seus sintomas em relação ao novo COVID-19, digite seu CPF</h3>
         <form class="box" method="post" >
           <h1>CPF:</h1>
           <input type="text" value={this.state.value} onChange={this.valueHandleChange} />

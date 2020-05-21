@@ -31,6 +31,7 @@ class Pergunta extends React.Component {
         this.setlevel = this.setlevel.bind(this);
         this.setCorrentIdNameSintoma = this.setCorrentIdNameSintoma.bind(this);
         this.setArraySintomas();
+        this.date();
     }
     
     setlevel(event) {
@@ -57,13 +58,31 @@ class Pergunta extends React.Component {
         console.log(this.state)
     }
 
-    postApi(){
-        
+    date () {
+        var today = new Date()
+        var month = ""+(today.getMonth()+1)
+        var day   = ""+today.getDate()
+        var monthWith2Digts = month.length<2 ? "0"+month :month
+        var dayWith2Digts   = day.length<2 ? "0"+day : day
+        return today.getFullYear()+'-'+monthWith2Digts+'-'+dayWith2Digts
     }
 
     setCorrentIdNameSintoma(event) {
+        if(this.state.level !== -1){
+            var adress = this.state.addressSintoma-1
+            console.log("adress: "+adress)
+            console.log("ID: "+this.state.arrayIdSintoma[adress])
+            console.log("NOME: "+this.state.arrayNomeSintoma[adress])
+            console.log("LEVEL: "+this.state.level)
+            console.log("DATA: "+this.date())
+            api.post('usuarios/'+this.state.cpf+'/sintomas/'+this.state.arrayIdSintoma[adress],{
+                nivel: this.state.level, 
+                data: this.date()
+            }).then(function (response) {
+                console.log(response)
+              })
+        }
         if(this.state.addressSintoma < this.state.arrayIdSintoma.length){
-
             this.setState({
                 addressSintoma: this.state.addressSintoma + 1,
                 text: 'Qual é seu level de '+this.state.arrayNomeSintoma[this.state.addressSintoma]+"?",
@@ -77,13 +96,6 @@ class Pergunta extends React.Component {
                 disabledButton: true,
                 imagem: 'https://pm1.narvii.com/6704/6e0f2fa15572d5e4af3ce47024acb7cf384a6a56_hq.jpg'
             })
-        }
-
-        if(this.state.level != -1){
-            api.post('usuarios/05189065154/sintomas/1',{nivel: 2, data: '2020-05-31'}).then(function (response) {
-                console.log(this.state.arrayNomeSintoma[this.state.addressSintoma])
-                console.log(this.state.arrayIdSintoma[this.state.addressSintoma])
-              })
         }
 
     }

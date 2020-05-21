@@ -4,6 +4,7 @@ import MyButton from './MyButton';
 import Header from './Header';
 import './pergunta.css';
 import $ from 'jquery';
+import { Link } from 'react-router-dom';
 
 class Pergunta extends React.Component {
     /*
@@ -27,6 +28,7 @@ class Pergunta extends React.Component {
             text: '',
             level: -1,
             disabledButton: true,
+            disabledImagem: true,
             imagem: 'https://i.pinimg.com/736x/5f/3d/f9/5f3df9a20c35308eb27a153248628c2a.jpg'
         };
         this.setlevel = this.setlevel.bind(this);
@@ -35,7 +37,6 @@ class Pergunta extends React.Component {
     }
 
     setlevel(event) {
-        console.log("ADRESS: "+this.state.addressSintoma)
         if (this.state.addressSintoma <= this.state.arrayIdSintoma.length) {
             this.setState({
                 level: parseInt(event.target.getAttribute('id')),
@@ -54,7 +55,6 @@ class Pergunta extends React.Component {
     }
 
     removeAlredyResponded(arrayOfValuesToRemove) {
-        console.log("arrayOfValuesToRemove: "+arrayOfValuesToRemove)
         var newArrayNomeSintoma = this.state.arrayNomeSintoma
         var newArrayIdSintoma = this.state.arrayIdSintoma
         for (let i = 0; i < newArrayIdSintoma.length; i++) {
@@ -92,7 +92,6 @@ class Pergunta extends React.Component {
                 this.removeAlredyResponded(sintomasAlredyResponded)
             ))
         ))
-        console.log(this.state)
     }
 
     minusAdressSintoma(){
@@ -111,7 +110,6 @@ class Pergunta extends React.Component {
     }
 
     setCorrentIdNameSintoma(event) {
-        console.log("ENTROU")
         if (this.state.level !== -1) {
             var adress = this.state.addressSintoma - 1
             api.post('usuarios/' + this.state.cpf + '/sintomas/' + this.state.arrayIdSintoma[adress], {
@@ -131,8 +129,9 @@ class Pergunta extends React.Component {
         else {
             this.setState({
                 addressSintoma: this.state.addressSintoma + 1,
-                text: 'acabou',
+                text: 'Teste foi finalizado, veja seus dados no grafico',
                 disabledButton: true,
+                disabledImagem: false,
                 imagem: 'https://pm1.narvii.com/6704/6e0f2fa15572d5e4af3ce47024acb7cf384a6a56_hq.jpg'
             })
         }
@@ -153,7 +152,7 @@ class Pergunta extends React.Component {
                 <div className="img-content">
                     <h1> {this.state.text}</h1>
                     <img src={this.state.imagem} alt='Pessoa Doente' />
-
+                    
                 </div>
                 <div className="buttons">
                     <MyButton id="0" onClick={this.setlevel} label="0" />

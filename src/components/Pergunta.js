@@ -57,8 +57,11 @@ class Pergunta extends React.Component {
         console.log(this.state)
     }
 
+    postApi(){
+        
+    }
+
     setCorrentIdNameSintoma(event) {
-        //fazer post da resposta
         if(this.state.addressSintoma < this.state.arrayIdSintoma.length){
 
             this.setState({
@@ -74,6 +77,13 @@ class Pergunta extends React.Component {
                 disabledButton: true,
                 imagem: 'https://pm1.narvii.com/6704/6e0f2fa15572d5e4af3ce47024acb7cf384a6a56_hq.jpg'
             })
+        }
+
+        if(this.state.level != -1){
+            api.post('usuarios/05189065154/sintomas/1',{nivel: 2, data: '2020-05-31'}).then(function (response) {
+                console.log(this.state.arrayNomeSintoma[this.state.addressSintoma])
+                console.log(this.state.arrayIdSintoma[this.state.addressSintoma])
+              })
         }
 
     }

@@ -37,7 +37,7 @@ class NameForm extends React.Component {
   }
 
   handleSubmit(event) {
-    api.post(`login`, { cpf: this.state.cpf }).then(function (response) {
+    api.post('login/'+this.state.cpf).then(function (response) {
       console.log(response)
     })
     event.preventDefault();
